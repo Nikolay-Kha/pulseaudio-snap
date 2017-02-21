@@ -1,0 +1,22 @@
+name: beep-test
+version: "1.0"
+summary: Beep every 5 sec
+description: Beep every 5 sec and annoy
+confinement: devmode
+
+apps:
+  csnap:
+    command: bin/csnap
+    daemon: simple
+    plugs: [pulseaudio]
+  csnap-run:
+    command: bin/csnap
+    plugs: [pulseaudio]
+
+parts:
+  csnap:
+    plugin: make
+    source: ../src
+    stage-packages:
+      - pulseaudio
+
